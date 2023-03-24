@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+touch brev-project-started
+
 ####################################################################################
 ##### Specify software and dependencies that are required for this project     #####
 #####                                                                          #####
