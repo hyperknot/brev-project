@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-touch brev-project-started
+touch "brev-project-started-$(date +%H%M%S)"
 
 ####################################################################################
 ##### Specify software and dependencies that are required for this project     #####
@@ -11,6 +11,18 @@ touch brev-project-started
 ##### The working directory is /home/brev/<PROJECT_FOLDER_NAME>. Execution of  #####
 ##### this file happens at this level.                                         #####
 ####################################################################################
+
+# locales
+sudo apt-get install -y language-pack-en
+sudo locale-gen --purge en_US.UTF-8
+sudo update-locale --reset LANG=en_US.UTF-8
+
+
+## Python
+sudo apt-get install -y libreadline-dev libbz2-dev libsqlite3-dev libncursesw5-dev libssl-dev zlib1g-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev xz-utils
+git clone --depth 1 https://github.com/pyenv/pyenv.git ~/.pyenv
+~/.pyenv/bin/pyenv install
+~/.pyenv/bin/pyenv global
 
 ##### Yarn #####
 # (echo ""; echo "##### Yarn #####"; echo "";)
@@ -93,3 +105,4 @@ touch brev-project-started
 # sudo usermod -aG docker $USER
 
 
+touch "brev-project-finished-$(date +%H%M%S)"
