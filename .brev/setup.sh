@@ -19,10 +19,20 @@ sudo update-locale --reset LANG=en_US.UTF-8
 
 
 ## Python
+rm -rf ~/.pyenv
 sudo apt-get install -y libreadline-dev libbz2-dev libsqlite3-dev libncursesw5-dev libssl-dev zlib1g-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev xz-utils
 git clone --depth 1 https://github.com/pyenv/pyenv.git ~/.pyenv
-~/.pyenv/bin/pyenv install
-~/.pyenv/bin/pyenv global
+~/.pyenv/bin/pyenv install 3.10
+~/.pyenv/bin/pyenv global 3.10
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+source ~/.bashrc
+pip install -U pip wheel setuptools
+
+
 
 ##### Yarn #####
 # (echo ""; echo "##### Yarn #####"; echo "";)
