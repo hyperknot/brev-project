@@ -2,6 +2,12 @@
 
 set -eo pipefail
 
+if [ -f done ]; then
+  echo "exiting"
+  exit 1
+fi
+
+
 touch "brev-project-started-$(date +%H%M%S)"
 
 ####################################################################################
@@ -19,6 +25,7 @@ sudo update-locale --reset LANG=en_US.UTF-8
 
 
 ## Python
+sudo rm -rf /opt/conda
 rm -rf ~/.pyenv
 sudo apt-get install -y libreadline-dev libbz2-dev libsqlite3-dev libncursesw5-dev libssl-dev zlib1g-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev xz-utils
 git clone --depth 1 https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -116,3 +123,4 @@ pip install -U pip wheel setuptools
 
 
 touch "brev-project-finished-$(date +%H%M%S)"
+touch done
