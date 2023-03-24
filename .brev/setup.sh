@@ -32,12 +32,7 @@ git clone --depth 1 https://github.com/pyenv/pyenv.git ~/.pyenv
 ~/.pyenv/bin/pyenv install 3.10
 ~/.pyenv/bin/pyenv global 3.10
 
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-
-source ~/.bashrc
-pip install -U pip wheel setuptools
+$(~/.pyenv/bin/pyenv which pip) install -U pip wheel setuptools
 
 
 
